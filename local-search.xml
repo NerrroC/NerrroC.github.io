@@ -4,12 +4,18 @@
   
   
   <entry>
-    <title>setStretchFactor失效的解决方法</title>
-    <link href="/2023/10/30/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <url>/2023/10/30/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <title>逃出迷雾镇</title>
+    <link href="/2023/10/23/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/"/>
+    <url>/2023/10/23/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/</url>
     
-    <content type="html"><![CDATA[<h1 id="setStretchFactor失效的解决方法"><a href="#setStretchFactor失效的解决方法" class="headerlink" title="setStretchFactor失效的解决方法"></a>setStretchFactor失效的解决方法</h1><h2 id="1-setStretchFactor-介绍"><a href="#1-setStretchFactor-介绍" class="headerlink" title="1.setStretchFactor()介绍"></a>1.setStretchFactor()介绍</h2><p>近期在开发过程中遇到了setStretchFactor()失效的问题，那什么是setStretchFactor()。</p><p>layout-&gt;setStretchFactor(list，1)：设定可伸缩控件，第一个参数用于指定设置的控件（序号从0起编号），第2个参数的值大于0则表示此控件为可伸缩控件。</p><p>通常我们在使用QSplitter的时候，都是用setStretchFactor()函数来进行分割比例的调整， 第一个参数index是子微件的索引值， 从0 开始。这里的话，Left是0，Top 是1；第二个参数stretch是拉伸系数，int 类型，下面主要对stretch的数值进行说明。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>);<br>ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">1</span>,<span class="hljs-number">8</span>);<br></code></pre></td></tr></table></figure><h2 id="2-问题所在与解决"><a href="#2-问题所在与解决" class="headerlink" title="2.问题所在与解决"></a>2.问题所在与解决</h2><p>在经过查阅之后发现是因为子窗口中有布局，所以导致setStretchFactor()失效。</p><p>解决办法就是放弃setStretchFactor()，直接使用setSize()函数，如下所示</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setSizes</span>(<span class="hljs-built_in">QList</span>&lt;<span class="hljs-type">int</span>&gt;(&#123;<span class="hljs-number">100</span>,<span class="hljs-number">400</span>&#125;));<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>2023年10月22日，和小伙伴们一起玩了《逃出迷雾镇》，整体来说还是挺有意思的，很推荐去玩一下。</p><h2 id="微剧透简述"><a href="#微剧透简述" class="headerlink" title="微剧透简述"></a>微剧透简述</h2><h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><p>推理部分还是挺简单的，但是也有比较新颖的设定，在第一遍三维世界推理完成后，被告知主角们因为身处游戏世界中，所以游戏世界其实是二维世界，所以之前的推理全部作废，推倒重来，这也算是本作品中的亮点了。</p><h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><p>就是一个二维世界的设定，其中核心就是对人物身份的区分以及城堡的构造，具体的剧透内容在后面</p><h3 id="情感"><a href="#情感" class="headerlink" title="情感"></a>情感</h3><p>情感部分真的是哭死我了，而且最尴尬的是整车只有我<del>一个185的大男人</del>在哭，这必须说一下，都怪DM！！选本的时候说有个本需要较大的抗压能力，我以为是被指责或者推理压力大那种抗压，那我想着我肯定行啊，毕竟我地大推土机，可是万万没想到，他说的抗压是泪腺的压力啊 ：(</p><h2 id="剧透内容"><a href="#剧透内容" class="headerlink" title="剧透内容"></a>剧透内容</h2><h3 id="设定部分"><a href="#设定部分" class="headerlink" title="设定部分"></a>设定部分</h3><p>先说设定，这样方便后面讲推理，就像前面说的，设定指出主角们所处的游戏世界是一个二维世界，而且不是我们平常所理解的那种二维世界，是一个鸟瞰视角的二维世界，如果是正常的人物形象的话，鸟瞰视角的人都是只有一个脑袋，这样无法区分，所以为了区分男性女性，对人物也有设定，在这个世界中，男性均为多边形，女性均为线段，这是我们上帝视角所能看到的情况，但在这样一个平面二维世界中，看到的男性可能也是线段（想象一下从边的角度看一个多边形），不过幸好迷雾镇中有迷雾，所以看到一条斜边的情况就是离的近的清晰，离得远的模糊，例如一个等腰直角三角形，你从斜边中垂线的角度上看向两个直角边，那么你看到的情况大概就是一个线段，最中间（直角）是最清晰的部分，由中间向两侧逐渐模糊，这就是这个世界的设定。</p><h3 id="推理部分"><a href="#推理部分" class="headerlink" title="推理部分"></a>推理部分</h3><p>前面也说了，推理一共分为两轮，第一轮按照三维世界进行推理，实际上都非常简单，五分钟一个案件，一共五个，很快就推完了，第二轮的时候引入新的设定之后，案件的思考都有了转折，其中城堡的布局也有了变化，每个人的房间也要重新推，但是说实话，只要你能接受这个设定，并按照其规则进行推理，整个推理流程还是很快的。</p><h3 id="情感部分"><a href="#情感部分" class="headerlink" title="情感部分"></a>情感部分</h3><p>情感真的是，我哭死，故事讲的就是一个从小患有自闭症的小男孩图图，妈妈承受不住负担之后离开了这个家庭，只剩下对游戏有着浓厚兴趣的程序员爸爸陪伴图图，某一次无意间爸爸发现图图对游戏非常感兴趣，所以就决心要开发一款只属于图图的游戏，但是在开发过程中爸爸也查出了晚期肺癌，在游戏开发完成的不久之后爸爸也离开了图图，留给图图的就是这款《逃出迷雾镇》的游戏和一封信，背景大概就是这样，最让人感动的就是在游戏结尾爸爸留给图图的信，我这一封真的太让人泪奔了。<br>节选片段：<br>（有一个叫小宁的白化病女孩非常喜欢图图）“爸爸从未想过你未来妻子的模样，或许她是纯白的？这样的话，你要让她穿上大红的嫁衣,因为爸爸在天上，看不清穿着白色婚纱的小宁。”“图图，你和小宁后来怎么样了呢？你们会走到一起吗？将来你一定要告诉爸爸啊。”<br>爆哭：“爸爸还有好多话想跟你说。但这台计算机是爸爸读大学时自己组装的，里面的核心元件从来没有换过，所以可用的空间不多了。一个汉字占2字节，1kb&#x3D;1024字节。除了游戏，爸爸只剩不到10kb的空间可以与你倾诉衷肠……10kb只能容纳5120个汉字……太少了，太少了。图图，爸爸对你的爱，比银河系所有的星辰加起来还要多，还要大。”</p>]]></content>
     
+    
+    <categories>
+      
+      <category>剧本杀</category>
+      
+    </categories>
     
     
   </entry>
@@ -17,12 +23,18 @@
   
   
   <entry>
-    <title>逃出迷雾镇</title>
-    <link href="/2023/10/26/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/"/>
-    <url>/2023/10/26/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/</url>
+    <title>setStretchFactor失效的解决方法</title>
+    <link href="/2023/10/20/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/10/20/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<p>2023年10月22日，和小伙伴们一起玩了《逃出迷雾镇》，整体来说还是挺有意思的，很推荐去玩一下。</p><h2 id="微剧透简述"><a href="#微剧透简述" class="headerlink" title="微剧透简述"></a>微剧透简述</h2><h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><p>推理部分还是挺简单的，但是也有比较新颖的设定，在第一遍三维世界推理完成后，被告知主角们因为身处游戏世界中，所以游戏世界其实是二维世界，所以之前的推理全部作废，推倒重来，这也算是本作品中的亮点了。</p><h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><p>就是一个二维世界的设定，其中核心就是对人物身份的区分以及城堡的构造，具体的剧透内容在后面</p><h3 id="情感"><a href="#情感" class="headerlink" title="情感"></a>情感</h3><p>情感部分真的是哭死我了，而且最尴尬的是整车只有我<del>一个185的大男人</del>在哭，这必须说一下，都怪DM！！选本的时候说有个本需要较大的抗压能力，我以为是被指责或者推理压力大那种抗压，那我想着我肯定行啊，毕竟我地大推土机，可是万万没想到，他说的抗压是泪腺的压力啊 ：(</p><h2 id="剧透内容"><a href="#剧透内容" class="headerlink" title="剧透内容"></a>剧透内容</h2><h3 id="设定部分"><a href="#设定部分" class="headerlink" title="设定部分"></a>设定部分</h3><p>先说设定，这样方便后面讲推理，就像前面说的，设定指出主角们所处的游戏世界是一个二维世界，而且不是我们平常所理解的那种二维世界，是一个鸟瞰视角的二维世界，如果是正常的人物形象的话，鸟瞰视角的人都是只有一个脑袋，这样无法区分，所以为了区分男性女性，对人物也有设定，在这个世界中，男性均为多边形，女性均为线段，这是我们上帝视角所能看到的情况，但在这样一个平面二维世界中，看到的男性可能也是线段（想象一下从边的角度看一个多边形），不过幸好迷雾镇中有迷雾，所以看到一条斜边的情况就是离的近的清晰，离得远的模糊，例如一个等腰直角三角形，你从斜边中垂线的角度上看向两个直角边，那么你看到的情况大概就是一个线段，最中间（直角）是最清晰的部分，由中间向两侧逐渐模糊，这就是这个世界的设定。</p><h3 id="推理部分"><a href="#推理部分" class="headerlink" title="推理部分"></a>推理部分</h3><p>前面也说了，推理一共分为两轮，第一轮按照三维世界进行推理，实际上都非常简单，五分钟一个案件，一共五个，很快就推完了，第二轮的时候引入新的设定之后，案件的思考都有了转折，其中城堡的布局也有了变化，每个人的房间也要重新推，但是说实话，只要你能接受这个设定，并按照其规则进行推理，整个推理流程还是很快的。</p><h3 id="情感部分"><a href="#情感部分" class="headerlink" title="情感部分"></a>情感部分</h3><p>情感真的是，我哭死，故事讲的就是一个从小患有自闭症的小男孩图图，妈妈承受不住负担之后离开了这个家庭，只剩下对游戏有着浓厚兴趣的程序员爸爸陪伴图图，某一次无意间爸爸发现图图对游戏非常感兴趣，所以就决心要开发一款只属于图图的游戏，但是在开发过程中爸爸也查出了晚期肺癌，在游戏开发完成的不久之后爸爸也离开了图图，留给图图的就是这款《逃出迷雾镇》的游戏和一封信，背景大概就是这样，最让人感动的就是在游戏结尾爸爸留给图图的信，我这一封真的太让人泪奔了。<br>节选片段：<br>（有一个叫小宁的白化病女孩非常喜欢图图）“爸爸从未想过你未来妻子的模样，或许她是纯白的？这样的话，你要让她穿上大红的嫁衣,因为爸爸在天上，看不清穿着白色婚纱的小宁。”“图图，你和小宁后来怎么样了呢？你们会走到一起吗？将来你一定要告诉爸爸啊。”<br>爆哭：“爸爸还有好多话想跟你说。但这台计算机是爸爸读大学时自己组装的，里面的核心元件从来没有换过，所以可用的空间不多了。一个汉字占2字节，1kb&#x3D;1024字节。除了游戏，爸爸只剩不到10kb的空间可以与你倾诉衷肠……10kb只能容纳5120个汉字……太少了，太少了。图图，爸爸对你的爱，比银河系所有的星辰加起来还要多，还要大。”</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="setStretchFactor失效的解决方法"><a href="#setStretchFactor失效的解决方法" class="headerlink" title="setStretchFactor失效的解决方法"></a>setStretchFactor失效的解决方法</h1><h2 id="1-setStretchFactor-介绍"><a href="#1-setStretchFactor-介绍" class="headerlink" title="1.setStretchFactor()介绍"></a>1.setStretchFactor()介绍</h2><p>近期在开发过程中遇到了setStretchFactor()失效的问题，那什么是setStretchFactor()。</p><p>layout-&gt;setStretchFactor(list，1)：设定可伸缩控件，第一个参数用于指定设置的控件（序号从0起编号），第2个参数的值大于0则表示此控件为可伸缩控件。</p><p>通常我们在使用QSplitter的时候，都是用setStretchFactor()函数来进行分割比例的调整， 第一个参数index是子微件的索引值， 从0 开始。这里的话，Left是0，Top 是1；第二个参数stretch是拉伸系数，int 类型，下面主要对stretch的数值进行说明。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>);<br>ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">1</span>,<span class="hljs-number">8</span>);<br></code></pre></td></tr></table></figure><h2 id="2-问题所在与解决"><a href="#2-问题所在与解决" class="headerlink" title="2.问题所在与解决"></a>2.问题所在与解决</h2><p>在经过查阅之后发现是因为子窗口中有布局，所以导致setStretchFactor()失效。</p><p>解决办法就是放弃setStretchFactor()，直接使用setSize()函数，如下所示</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setSizes</span>(<span class="hljs-built_in">QList</span>&lt;<span class="hljs-type">int</span>&gt;(&#123;<span class="hljs-number">100</span>,<span class="hljs-number">400</span>&#125;));<br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>Qt</category>
+      
+    </categories>
     
     
   </entry>
