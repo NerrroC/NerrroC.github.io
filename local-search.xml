@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2023/10/30/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/10/30/setStretchFactor%E5%A4%B1%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="setStretchFactor失效的解决方法"><a href="#setStretchFactor失效的解决方法" class="headerlink" title="setStretchFactor失效的解决方法"></a>setStretchFactor失效的解决方法</h1><h2 id="1-setStretchFactor-介绍"><a href="#1-setStretchFactor-介绍" class="headerlink" title="1.setStretchFactor()介绍"></a>1.setStretchFactor()介绍</h2><p>近期在开发过程中遇到了setStretchFactor()失效的问题，那什么是setStretchFactor()。</p><p>layout-&gt;setStretchFactor(list，1)：设定可伸缩控件，第一个参数用于指定设置的控件（序号从0起编号），第2个参数的值大于0则表示此控件为可伸缩控件。</p><p>通常我们在使用QSplitter的时候，都是用setStretchFactor()函数来进行分割比例的调整， 第一个参数index是子微件的索引值， 从0 开始。这里的话，Left是0，Top 是1；第二个参数stretch是拉伸系数，int 类型，下面主要对stretch的数值进行说明。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>);<br>ui-&gt;splitter-&gt;<span class="hljs-built_in">setStretchFactor</span>(<span class="hljs-number">1</span>,<span class="hljs-number">8</span>);<br></code></pre></td></tr></table></figure><h2 id="2-问题所在与解决"><a href="#2-问题所在与解决" class="headerlink" title="2.问题所在与解决"></a>2.问题所在与解决</h2><p>在经过查阅之后发现是因为子窗口中有布局，所以导致setStretchFactor()失效。</p><p>解决办法就是放弃setStretchFactor()，直接使用setSize()函数，如下所示</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">ui-&gt;splitter-&gt;<span class="hljs-built_in">setSizes</span>(<span class="hljs-built_in">QList</span>&lt;<span class="hljs-type">int</span>&gt;(&#123;<span class="hljs-number">100</span>,<span class="hljs-number">400</span>&#125;));<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>逃出迷雾镇</title>
     <link href="/2023/10/26/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/"/>
     <url>/2023/10/26/%E9%80%83%E5%87%BA%E8%BF%B7%E9%9B%BE%E9%95%87/</url>
